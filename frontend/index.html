@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroGraph - Brain Connectivity GraphRAG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="NeuroGraph Logo">
+            NeuroGraph
+        </a>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="architecture.html">Architecture</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">NeuroGraph</h1>
+            <h2 class="hero-subtitle">Brain Connectivity Analysis powered by GraphRAG</h2>
+            <p class="hero-desc">Discover hidden connections between brain regions using knowledge graph traversal combined with vector search. Ask complex multi-hop questions that standard RAG cannot answer.</p>
+            <a href="dashboard.html" class="btn btn-primary">Launch Dashboard &rarr;</a>
+        </div>
+    </section>
+
+    <section class="features animate-on-scroll">
+        <div class="features-grid">
+            <div class="card">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Knowledge Graph</h3>
+                <p style="color: var(--text-secondary)">Brain regions, neural pathways, and their connections modeled as an interactive knowledge graph.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">🔗</div>
+                <h3 class="feature-title">Multi-Hop Reasoning</h3>
+                <p style="color: var(--text-secondary)">Follow chains of relationships across multiple documents to find answers that simple retrieval misses.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">🌐</div>
+                <h3 class="feature-title">3D Visualization</h3>
+                <p style="color: var(--text-secondary)">Explore brain connectivity in an interactive 3D force-directed graph with animated query paths.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section animate-on-scroll">
+        <h2 style="font-size: 2rem; color: #fff; margin-bottom: 1rem;">Explore the Network</h2>
+        <p style="color: var(--text-secondary)">Interactive visualization of neural connections and literature-derived relationships.</p>
+        <div class="preview-container">
+            <div id="preview-graph"></div>
+        </div>
+    </section>
+
+    <section class="how-it-works animate-on-scroll">
+        <h2 style="text-align: center; font-size: 2.5rem; color: #fff; margin-bottom: 2rem;">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <h3 style="color: var(--primary-glow); margin-bottom: 0.5rem;">Document Ingestion</h3>
+                    <p style="color: var(--text-secondary)">Neuroscience texts are processed and entities (regions, tracts, functions) are extracted.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <h3 style="color: var(--primary-glow); margin-bottom: 0.5rem;">Knowledge Graph Construction</h3>
+                    <p style="color: var(--text-secondary)">Entities and relationships form a traversable graph alongside a vector index.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <h3 style="color: var(--primary-glow); margin-bottom: 0.5rem;">Multi-Hop Query</h3>
+                    <p style="color: var(--text-secondary)">Questions trigger both graph traversal and vector search, then an LLM synthesizes the answer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with FastAPI, NetworkX, ChromaDB, Three.js | <a href="https://github.com" target="_blank">View on GitHub</a></p>
+    </footer>
+
+    <script src="js/particles.js"></script>
+    <script src="js/graph3d.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.initParticles) initParticles('hero-particles');
+            if (window.initGraph) {
+                // Let graph3d.js use its fallback sample data for preview
+                initGraph('preview-graph', null);
+            }
+        });
+    </script>
+</body>
+</html>

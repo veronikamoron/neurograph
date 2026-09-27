@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture - NeuroGraph</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/architecture.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="NeuroGraph Logo">
+            NeuroGraph
+        </a>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="architecture.html" class="active">Architecture</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="arch-hero">
+        <h1 class="fade-in">How NeuroGraph Works</h1>
+        <p class="fade-in" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
+            Deep dive into the architecture powering our Brain Connectivity GraphRAG system.
+        </p>
+    </header>
+
+    <section class="arch-section animate-on-scroll">
+        <h2>Standard RAG vs GraphRAG</h2>
+        <div class="comparison-grid">
+            <div class="flow-box">
+                <h3>Standard RAG</h3>
+                <div class="flow-step">Question</div>
+                <div class="flow-step">Vector Search (Similarity)</div>
+                <div class="flow-step">Top-K Text Chunks</div>
+                <div class="flow-step">LLM Prompt</div>
+                <div class="flow-step highlight" style="color: #ff4444; border-color: #ff4444; box-shadow: 0 0 10px rgba(255,68,68,0.2);">Missing Multi-hop Context</div>
+            </div>
+            
+            <div class="flow-box">
+                <h3>NeuroGraph (GraphRAG)</h3>
+                <div class="flow-step">Question</div>
+                <div class="flow-step">Vector Search + Entity Extraction</div>
+                <div class="flow-step accent">Graph Traversal (N-hops)</div>
+                <div class="flow-step">Merged Context (Graph + Vectors)</div>
+                <div class="flow-step highlight" style="color: #00ff88; border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.2);">Comprehensive Multi-hop Answer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="arch-section animate-on-scroll">
+        <h2>Knowledge Graph Schema</h2>
+        
+        <h3 style="margin-bottom: 1rem; color: #fff;">Node Types</h3>
+        <table class="arch-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Color</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>brain_region</code></td>
+                    <td><span class="node-color" style="background:#00f0ff;"></span>Cyan</td>
+                    <td>Anatomical structure in the brain</td>
+                    <td>Hippocampus, Amygdala</td>
+                </tr>
+                <tr>
+                    <td><code>tract</code></td>
+                    <td><span class="node-color" style="background:#ff00ff;"></span>Magenta</td>
+                    <td>White matter pathway</td>
+                    <td>Fornix, Corpus Callosum</td>
+                </tr>
+                <tr>
+                    <td><code>function</code></td>
+                    <td><span class="node-color" style="background:#00ff88;"></span>Green</td>
+                    <td>Cognitive or motor function</td>
+                    <td>Memory Consolidation</td>
+                </tr>
+                <tr>
+                    <td><code>disorder</code></td>
+                    <td><span class="node-color" style="background:#ff4444;"></span>Red</td>
+                    <td>Neurological/psychiatric condition</td>
+                    <td>Alzheimer's Disease</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: #fff;">Relationship Types</h3>
+        <table class="arch-table">
+            <thead>
+                <tr>
+                    <th>Relationship</th>
+                    <th>Source Node</th>
+                    <th>Target Node</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>connects_to</code></td>
+                    <td>brain_region</td>
+                    <td>brain_region</td>
+                    <td>Hippocampus &rarr; Amygdala</td>
+                </tr>
+                <tr>
+                    <td><code>projects_via</code></td>
+                    <td>brain_region</td>
+                    <td>tract</td>
+                    <td>Hippocampus &rarr; Fornix</td>
+                </tr>
+                <tr>
+                    <td><code>enables</code></td>
+                    <td>brain_region</td>
+                    <td>function</td>
+                    <td>Amygdala &rarr; Emotion Processing</td>
+                </tr>
+                <tr>
+                    <td><code>affected_by</code></td>
+                    <td>brain_region</td>
+                    <td>disorder</td>
+                    <td>Hippocampus &rarr; Alzheimer's</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="arch-section animate-on-scroll">
+        <h2>Tech Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-badge">
+                <h4>Python & FastAPI</h4>
+                <p>High-performance asynchronous backend API</p>
+            </div>
+            <div class="tech-badge">
+                <h4>NetworkX</h4>
+                <p>In-memory graph processing and multi-hop traversal</p>
+            </div>
+            <div class="tech-badge">
+                <h4>ChromaDB</h4>
+                <p>Vector database for semantic similarity search</p>
+            </div>
+            <div class="tech-badge">
+                <h4>Google Gemini</h4>
+                <p>Advanced LLM for entity extraction and synthesis</p>
+            </div>
+            <div class="tech-badge">
+                <h4>Three.js & 3D Force Graph</h4>
+                <p>WebGL-accelerated interactive 3D visualizations</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with FastAPI, NetworkX, ChromaDB, Three.js | <a href="https://github.com" target="_blank">View on GitHub</a></p>
+    </footer>
+
+    <script src="js/theme.js"></script>
+</body>
+</html>

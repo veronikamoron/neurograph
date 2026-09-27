@@ -1,0 +1,43 @@
+# NeuroGraph specific
+chroma_db/
+.model_cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Secrets & Environment
+.env
+!.env.example
+!backend/.env.example
+
+# Docker
+*.log
+
+# Node (if someone runs npm install)
+node_modules/
+
+# Test / Coverage
+.pytest_cache/
+htmlcov/
+.coverage
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+[Dd]esktop.ini
