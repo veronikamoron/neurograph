@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <path d="M 50 15 C 30 15 15 30 15 50 C 15 70 30 85 50 85 C 70 85 85 70 85 50 C 85 30 70 15 50 15 Z" fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.3"/>
+  <path d="M 50 25 C 35 25 25 35 25 50 C 25 65 35 75 50 75 C 65 75 75 65 75 50 C 75 35 65 25 50 25 Z" fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.5"/>
+  
+  <circle cx="50" cy="50" r="4" fill="#00f0ff"/>
+  
+  <circle cx="35" cy="35" r="3" fill="#ff00ff"/>
+  <circle cx="65" cy="35" r="3" fill="#00f0ff"/>
+  <circle cx="30" cy="55" r="3" fill="#00f0ff"/>
+  <circle cx="70" cy="55" r="3" fill="#00ff88"/>
+  <circle cx="45" cy="70" r="3" fill="#00f0ff"/>
+  <circle cx="55" cy="70" r="3" fill="#ff4444"/>
+  
+  <line x1="50" y1="50" x2="35" y2="35" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  <line x1="50" y1="50" x2="65" y2="35" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  <line x1="50" y1="50" x2="30" y2="55" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  <line x1="50" y1="50" x2="70" y2="55" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  <line x1="50" y1="50" x2="45" y2="70" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  <line x1="50" y1="50" x2="55" y2="70" stroke="#00f0ff" stroke-width="1.5" opacity="0.8"/>
+  
+  <line x1="35" y1="35" x2="30" y2="55" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+  <line x1="65" y1="35" x2="70" y2="55" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+  <line x1="30" y1="55" x2="45" y2="70" stroke="#00f0ff" stroke-width="1" opacity="0.5"/>
+  <line x1="70" y1="55" x2="55" y2="70" stroke="#ff4444" stroke-width="1" opacity="0.5"/>
+</svg>

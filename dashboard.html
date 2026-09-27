@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NeuroGraph</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="NeuroGraph Logo">
+            NeuroGraph
+        </a>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="architecture.html">Architecture</a>
+            <button id="config-btn" class="btn" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
+                <span id="api-key-status">API Key: Not set</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- LEFT: Graph -->
+        <div class="graph-panel">
+            <div id="main-graph"></div>
+            <div class="graph-legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#00f0ff;"></span>Brain Region</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#ff00ff;"></span>Tract</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#00ff88;"></span>Function</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#ff4444;"></span>Disorder</span>
+            </div>
+        </div>
+
+        <!-- RIGHT: Query Area -->
+        <div class="query-panel">
+            <div class="query-input-section">
+                <h2>Ask a Question</h2>
+                <textarea id="query-input" placeholder="e.g. How does the basal ganglia connect to motor control?"></textarea>
+                <button id="submit-query" class="btn btn-primary" style="width: 100%;">Query NeuroGraph</button>
+                <div class="example-chips" id="example-chips">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="answer-section">
+                <div id="query-spinner" class="spinner"></div>
+                <div id="answer-container">
+                    <!-- Results injected here -->
+                    <div style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+                        Submit a query to see GraphRAG in action.
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM: Metrics -->
+            <div class="metrics-bar">
+                <div class="metric-card">
+                    <div class="metric-value" id="metric-hops">0</div>
+                    <div class="metric-label">Hops</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="metric-nodes">0</div>
+                    <div class="metric-label">Nodes Visited</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="metric-latency">0ms</div>
+                    <div class="metric-label">Latency</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="metric-vectors">0</div>
+                    <div class="metric-label">Vector Results</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="metric-sources">0</div>
+                    <div class="metric-label">Sources</div>
+                </div>
+            </div>
+
+            <!-- AI Research Disclaimer -->
+            <div class="ai-disclaimer">
+                ⚠️ <strong>Scientific Disclaimer:</strong> NeuroGraph is an experimental research prototype utilizing GraphRAG and generative AI. Designed strictly for research exploration and academic demonstrations. Not intended for medical advice, clinical diagnostics, or healthcare decision-making. No liability is assumed for completeness or accuracy.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/providers.js"></script>
+    <script src="js/metrics.js"></script>
+    <script src="js/graph3d.js"></script>
+    <script src="js/query.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.initProviderConfig) window.initProviderConfig();
+            if (window.initMetrics) window.initMetrics();
+            if (window.initQueryInterface) window.initQueryInterface();
+            if (window.initGraph) {
+                fetch('/api/graph')
+                    .then(res => res.ok ? res.json() : null)
+                    .then(data => {
+                        initGraph('main-graph', data);
+                    })
+                    .catch(() => {
+                        initGraph('main-graph', null);
+                    });
+            }
+            
+            // Check key on load
+            if (window.hasKey && !window.hasKey()) {
+                setTimeout(() => {
+                    if (window.showKeyModal) window.showKeyModal();
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
