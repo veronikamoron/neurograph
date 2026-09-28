@@ -60,7 +60,7 @@ async function submitQuery(question) {
         let data;
         let usedBackend = false;
 
-        if (apiKey) {
+        if (apiKey && apiKey !== 'demo_simulation') {
             try {
                 const response = await fetch('/api/query', {
                     method: 'POST',
