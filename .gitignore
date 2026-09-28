@@ -1,6 +1,7 @@
 # NeuroGraph specific
 chroma_db/
 .model_cache/
+frontend/record.html
 
 # Python
 __pycache__/
